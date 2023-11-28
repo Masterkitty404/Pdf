@@ -1,0 +1,230 @@
+1a.      ANIMATION USING PENCIL 2D
+
+STEP 1:Open Pencil 2D animation to make an animation,open a new file and keep the first frame in the bitmap layer.
+ STEP 2:Draw on the first frame to create the initial scene in the first bitmap layer. 
+STEP3: Duplicate the drawing layer to create subsequent frames.
+ STEP4 : In each duplicate frame,make small changes to the content to create the animation effect. 
+STEP5 : Enable onion skinning to see the previous and next frames as transperant overlays.
+ STEP6 : Keep repeating until we create an animation.
+ STEP 7 :Making changes in color wheel can make the animation look dynamic. 
+STEP8 : Use the play button to preview your animation in the Pencil2D interface. 
+STEP9 : Adjust the frame rate if needed to control the speed of animation.
+ STEP10 : Save the Pencil2D project for further changes.
+
+
+
+
+
+
+
+
+
+1b.    CREATION OF LOGO OR BANNER USING GIMP
+STEP 1: Select new option from file menu and create an image of size 1920X1080 pixels.
+STEP 2: In the menu from tool option create background select tools -->Paint tools -->Bucket fill the image pattern.
+
+STEP 3: Create a new layer for blending the image background. To create a new layer, select the New Layer option from the layer menu or hit the SHIFT+CTRL+N keys. It will open a dialog window to create a new layer.
+
+STEP 4: Select the blend tool by navigating Tools-> Paint Tools-> Gradient menu or hit the G key.Select the background color as black before blending.
+
+STEP 5: Add the text by selecting the Text tool from the tool menu or hit the T key. Select the text color white and Bold fonts with a larger size. Now, click anywhere on the image canvas and type the name.
+
+STEP 6: Add some effects to the text to make it more artistic. To add an artistic filter, navigate to Filters-> Artistic-> Simple Linear Iterative Clustering menu; It will apply the selected filter to the text. You can choose any of the artistic filters of your choice. It will open a dialog window to specify the filter values.
+
+STEP 7: Adding shadows to the text makes it more attractive and meaningful for the logo. Afterstyling the text, add the shadow to the text. To add a shadow filter, navigate to the Filters-> Light and Shadows menu.
+
+STEP 8: To make the logo more informative, add a picture . To add a picture, drag and drop the picture over this image.
+
+STEP 9: If the image size is larger and the background takes a lot more space,crop it using the crop tool. To activate the crop tool, hit the SHIFT+C keys. Adjust the region to be cropped and hit the Enter key. It will crop the image and reduce the size of the logo.
+
+STEP 10: Use the save option to save it in GIMP's default format, which is XCF. It will save the current work as the current position having layers and all properties.
+
+2.    Working with Audio Editing tool like Audacity
+
+Step 1: Find and import the file you want to edit.To import an audio file,select
+file-->import -->audio.For quicker method,just drag and drop the files into the
+Audacity window.
+Step 2: Check the waveform to detect any DCoffset,Select the clip, click on Normalize to remove the DC offset.Listen to the audio by clicking on the play and stop button.
+Step 3: Select and change the range of audio you want.To change any part of your audio clip, first, select the part you want to change. You can cut, copy, paste, and duplicate.
+View > Zoom > Zoom In (or Ctrl + 1)
+View > Zoom > Zoom Out (or Ctrl + 3).
+Once you select a specific range of audio and click on play, you can listen to only the selected part. By using Edit > Undo to rescue the process.
+Step 4: To trim the audio, Click on Edit > Remove Special > Trim Audio to delete the specific range. Use Tracks > Align Tracks > Start to Zero to align it.
+Step 5: Find and import another file you want to mix.To import an audio file,select file -->import -->audio.For quicker method,just drag and drop the files into the Audacity window.
+Step 6: Use Fade in/Fade out.Select > Region > Cursor to Track End > Effect >
+Fade out to fade out at the final seconds of audio.
+Step 7: Compress the audio.Go to File > Export and select the audio format that we want to save.Under the format option,choose the Bitrate mode(variable or constant) the set the quality.
+Step 8: By clicking on File > Save Project > Save Project to save out project and testour audio.
+
+
+
+
+
+
+
+
+
+
+3. WORKING WITH VIDEO EDITING TOOL USING OPENSHOT
+
+STEP 1: Go to file and select import files, add the files that you need to edit.
+STEP 2: To trim the video contents, drag the ends of clips on the timeline to shorten them.
+STEP 3: To split the video, press the scissor-shaped razor tool, place the play head at the position where you want to split and click on.
+STEP 4: To crop the portion of the video, scroll down through the properties toolbar and perform Crop Height, Crop Width, Crop X, Crop Y.
+STEP 5: To mix video contents, import another video file and drag it to the same track of the first video.
+STEP 6: To remove noise, you need to import the audio file to Audacity and then go to Effects -> Noise Reduction and then export the final audio file to Open Shot.
+STEP 7: To add special effects, click Transition select one of them and drag it to the timeline of the target video clip.
+STEP 8: To change the speed of the frames, right-click the target video on the timeline - >Time which will refer 3 options : Normal, Fast, Slow.
+STEP 9: Press Fast -> Forward and select 2X,4X,8X or 16X to speed up the playback speed.
+STEP 10: Press Slow -> Forward and select 1/2X,1/4X,1/8X or 1/16X to slow down the playback speed.
+STEP 11: To add captions, click on title from menu bar, pick one of the templates appearing under the template drop-down list. Type your text in the "Line 1" box and then drag to track.
+STEP 12: To export the project -> Go to file > Export Project > Export Video. Change the filename, select the profile and export the video.
+
+
+
+
+
+
+
+
+
+
+
+4.   Web page creation using WordPress
+
+Step 1: Go to the WordPress web page and login into it.
+Step 2: Create a new site as per your requirements.
+Step 3: To design a simple home page, start by adding the site name and provide with the site logo.
+Step 4: Add relevant banner to your web page and provide the description.
+Step 5: Add a table to your site with required number of rows and columns you need.
+Step 6: Add quick links like About, Twitter, G-Mail, etc.
+Step 7: Add a search interface by providing your own placeholder and search logo.
+Step 8: Add a simple navigation from the home page to the inside pages of the website.
+Step 9: Also design a responsive web page to use your site on both web and mobile interfaces.
+Step 10: Save your site as draft for further changes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5a. 2d animation using krita
+
+STEP 1: Open Krita, create a new file of 1900 X 1080 ratio, with Resolution 100
+STEP 2: To set Animation Timeline go to Settings-->Dockers Animation Timeline so then the timeline will display
+STEP 3: Use Krita's Animation workspace by clicking windows-->workspace--> Animation
+STEP 4: Again go to Settings--> Dockers-->Advanced color selector to bring the color wheel. Drag and drop the option on your convenient way
+STEP 5: To enable brush go to Settings--> Dockers--> Brush Present
+STEP 6: Click on 'Add blank Frame' and keep the cursor on the blank frame then right_click--> Create Blank  Frame for few more time
+STEP 7: Click the first empty frame and draw any type of drawing you need
+STEP 8: On the Animation Timeline mention 'Paint Layer 1' there we can find "onion skin" option with bulb like icon turn it on to see previous frame diagram this will help us to draw more naturally
+STEP 9: Continue the process up to frames diagran's we need
+STEP 10: After completing select the frames that you need to play and set the speed on your own then hit the Play Button to play the animation that you created
+STEP 11: Save the animation on the format *.kra
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5b.   3D Animation using Blender
+
+Step 1: Download, install and open the Blender application.
+Step 2: To create a suitable environment, from the bottom menu bar select Add > Plane.
+Step 3: Add or import the 3D models for your scene.
+Step 4: To set a keyframe, select an object > move to frame 1 on timeline > make changes to the object and insert keyframe by pressing "|".
+Step 5: To animate, move to subsequent frame > adjust the object > insert frames as needed.
+Step 6: Set the total number of frames for your animation.
+Step 7: Use the playhead to preview the animation.
+Step 8: Apply materials and textures to make the animation more dynamic.
+Step 9: Define the rendering setting like resolution like resolution, format in Output properties.
+Step 10: Click "Render" or "Render Animation" to start rendering.
+Step 11: Save your Blender project for further changes.
+Step 12: Export the animation to a video format like MP4.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6. Adding animation to WordPress using LottieFiles
+
+Step 1: Go to LottieFiles website and create your account.
+Step 2: Now select the animation you want to choose.
+ Step 3: You can change the color, background color of your animation.
+Step 4: Click the "Download" button to save the animation file to your computer.
+Step 5: Preview your animation > Choose HandOff Embed icon > Copy the HTML code.
+Step 6: Now in your WordPress dashboard go to "Posts" and click "Add new post".
+ Step 7: Add a new HTML code block.
+Step 8: Now paste your Lottie animation embedded code into the space.
+Step 9: Preview your post or page to ensure the animation displays correctly and then Publish.
+Step 10: Make sure to test the animation on various devices and web browsers to ensure compatibility.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+7.   Creation of simple E-Learning module using EdApp
+
+Step 1: Go to the EdApp website and sign up for an account and login into your account.
+ Step 2: Click on "Create New Course" to begin building your E-learning module.
+ Step 3: Choose a template that suits your content and objectives.
+Step 4: Within each module you can add different types of content.
+Step 5: You can add text, images to enhance the learning experience.
+Step 6: You can make your content more interactive by adding quizzes, surveys, polls and other  engaging elements.
+ Step 7: Upload or link to relevant media and resources to support the learning content.
+ Step 8: Post an assessment to your module to know how well the learners are clear with your  Content.
+Step 9: Before publishing, thoroughly test and preview your course to ensure everything works  as expected.
+Step 10: Define who can access the course. You can make it available to specific teams,  departments, or the entire organization.
+Step 11: Once you are satisfied with your E-Learning module, publish it.
+Step 12: You can share it with your target audience by providing them with the access link.

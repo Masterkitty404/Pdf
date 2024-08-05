@@ -1,0 +1,1756 @@
+1
+PROGRAM: 
+
+import tensorflow as tf # creating a scalar scalar = tf.constant(7) scalar 
+
+scalar.ndim 
+
+# create a vector 
+
+vector = tf.constant([10, 10]) 
+
+# checking the dimensions of vector vector.ndim 
+
+# creating a matrix 
+
+matrix = tf.constant([[1,  2], [3, 4]])  print(matrix) 
+
+print("the number of dimensions of a matrix is :"+str(matrix.ndim))  
+
+
+
+
+
+
+# creating two tensors 
+
+matrix = tf.constant([[1,  2], [3, 4]]) 
+
+matrix1 = tf.constant([[2, 4],  [6, 8]])  
+
+# addition of two matrices  
+
+print("Addition  of two  matrices:")  
+
+print(matrix+matrix1) 
+
+
+
+
+
+
+OUTPUT: 
+
+
+
+tf.Tensor  ( [[1 2] [3  4]], shape=(2, 2), dtype=int32) 
+
+the number of dimensions of a matrix is :2 Addition of two  matrices: 
+
+tf.Tensor ( [[ 3 6] [  9 12]], shape=(2, 2), dtype=int32) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                         2 
+
+2
+PROGRAM: 
+
+import numpy as np  
+
+import tensorflow as tf 
+
+from tensorflow import  keras 
+
+from tensorflow.keras import layers 
+
+# Generate some random data for regression  
+
+np.random.seed(0) 
+
+X = np.random.rand(100, 1) # Features 
+
+y = 2 * X.squeeze() + 1 + np.random.randn(100) * 0.1 # Labels  
+
+# Define the model 
+
+model = keras.Sequential([layers.Dense(10, activation='relu', input_shape=(1,)), 
+layers.Dense(1) ])  # Output layer with one neuron for regression 
+
+# Compile the model 
+
+model.compile(optimizer='adam', loss='mse') # Using mean squared error loss for regression 
+# Train the model 
+
+model.fit(X,  y, epochs=100, batch_size=32, verbose=0) # Training for 100 epochs  
+
+# Make predictions 
+
+predictions = model.predict(X) 
+
+# Print some predictions and true labels for comparison for i in range(5): 
+
+print("Predicted:", predictions[i][0],   "\tTrue:",  y[i]) 
+
+
+
+OUTPUT: 
+
+4/4 [==============================]    -  0s 3ms/step  
+
+Predicted: 2.0447748 True: 1.9811120237763138 
+
+Predicted: 2.3311834 True: 2.520461381440258 
+
+Predicted: 2.1376472 True: 2.252092996116334 
+
+Predicted: 2.038009   True: 1.9361419973660712 
+
+Predicted: 1.8153862 True: 1.9961348180573695 
+
+
+
+
+                                                                         5 
+
+3
+PROGRAM: 
+
+import numpy as np  
+
+import tensorflow as tf 
+
+from tensorflow.keras.models import Sequential  
+
+from tensorflow.keras.layers import Dense 
+
+# Generate some example data for a logical OR operation  
+
+X = np.array([[0, 0],  [0, 1], [1, 0],  [1, 1]]) 
+
+y = np.array([0, 1, 1, 1]) 
+
+# Define the perceptron model  
+
+model = Sequential([Dense(1, input_shape=(2,), activation='sigmoid', use_bias=True)]) 
+
+# Compile the model  
+
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy']) 
+
+# Train the model 
+
+model.fit(X,  y, epochs=1000, verbose=0)  
+
+# Evaluate the model 
+
+loss, accuracy = model.evaluate(X, y)  
+
+print("Loss:",  loss)  
+
+print("Accuracy:",  accuracy) 
+
+# Make predictions 
+
+predictions = model.predict(X)  
+
+print("Predictions:",  predictions.flatten()) 
+
+
+
+OUTPUT: 
+
+1/1 [==============================]    -  0s 156ms/step - loss: 0.5838 - accuracy: 
+0.7500 Loss: 0.5837528109550476 
+
+Accuracy: 0.75 
+
+1/1 [==============================]    -  0s 46ms/step Predictions: [0.66924465 
+0.78853077 0.5416373 0.68530434] 
+
+
+
+
+
+
+                                                                         8 
+
+4
+PROGRAM: 
+
+import random 
+
+import matplotlib.pyplot  as plt  
+
+import numpy as np 
+
+import tensorflow as tf 
+
+from tensorflow.keras.datasets import mnist, fashion_mnist  
+
+from tensorflow.keras.utils  
+
+import to_categorical SEED_VALUE  = 42 
+
+random.seed(SEED_VALUE)  
+
+np.random.seed(SEED_VALUE) 
+
+Tf .random.set_seed(SEED_VALUE) 
+
+(X_train_all, y_train_all),  (X_test, y_test) = mnist.load_data()  
+
+X_valid = X_train_all[:10000] 
+
+X_train = X_train_all[10000:]  
+
+y_valid = y_train_all[:10000]  
+
+y_train = y_train_all[10000:]  
+
+print(X_train.shape)  
+
+print(X_valid.shape) 
+
+print(X_test.shape)  
+
+plt.figure(figsize=(18,  5))  
+
+for i in range(3): 
+
+plt.subplot(1, 3, i + 1)  
+
+plt.axis(True) 
+
+plt.imshow(X_train[i],   cmap='gray')  
+
+plt.subplots_adjust(wspace=0.2, hspace=0.2) 
+
+X_train = X_train.reshape((X_train.shape[0], 28 *  28))  
+
+X_train = X_train.astype("float32")  / 255 
+
+X_test = X_test.reshape((X_test.shape[0], 28 * 28))  
+
+X_test = X_test.astype("float32") / 255 
+
+
+                                                                        11 
+
+5
+X_valid = X_valid.reshape((X_valid.shape[0], 28 * 28)) 
+
+X_valid = X_valid.astype("float32") / 255 
+
+((X_train_fashion, y_train_fashion), (_, _)) = fashion_mnist.load_data() 
+print(y_train_fashion[0:9]) 
+
+y_train_onehot = to_categorical(y_train_fashion[0:9])  
+
+print(y_train_onehot) 
+
+
+
+OUTPUT: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                  12 
+
+6
+Ex. No:5 
+                             IMPLEMENT     A IMAGE   CLASSIFIER    USING  CNN  IN TENSORFLOW/KERAS 
+Date:10-2-2024 
+
+
+
+
+             AIM: 
+
+                         To   write  the  python   program  to  implement   an  image  classifier  using  CNN   in 
+             tensorflow/  keras. 
+
+
+
+             ALGORITHM: 
+
+             Step 1: Import necessary libraries. 
+
+             Step 2: Load and prepare the CIFAR-10 dataset. 
+
+             Step 3: Define class names for the CIFAR-10 dataset. 
+
+             Step 4: Visualize the first  25 images from the training set. 
+
+             Step 5: Define the convolutional neural network  (CNN) model. 
+
+             Step 6: Compile the model and train the model on the training data. 
+
+             Step 7: Plot the training history (accuracy and epochs) and evoluate the model on the test 
+             data. 
+
+
+
+             PROGRAM: 
+
+             import  tensorflow as tf 
+
+             from  tensorflow.keras import datasets, layers, models  
+
+             import  matplotlib.pyplot  as plt 
+
+             (train_images, train_labels), (test_images, test_labels) = datasets.cifar10.load_data()  
+
+             train_images, test_images = train_images / 255.0, test_images / 255.0  
+
+             class_names = ['airplane', 'automobile', 'bird', 'cat', 'deer','dog', 'frog', 'horse', 'ship', 'truck'] 
+             plt.figure(figsize=(10,10)) 
+
+             for  i in range(25):  
+
+             plt.subplot(5,5,i+1)  
+
+             plt.xticks([]) 
+
+             plt.yticks([])  
+
+             plt.grid(False) 
+
+             plt.imshow(train_images[i]) 
+
+
+
+                                                                                      14 
+
+7
+# The CIFAR labels happen to be arrays,  
+
+# which is why you need the extra index  
+
+plt.xlabel(class_names[train_labels[i][0]]) 
+
+plt.show() 
+
+model = models.Sequential() 
+
+model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(32, 32, 3))) 
+
+model.add(layers.MaxPooling2D((2, 2))) 
+
+model.add(layers.Conv2D(64, (3, 3), activation='relu')) 
+
+model.add(layers.MaxPooling2D((2, 2))) 
+
+model.add(layers.Conv2D(64, (3, 3), activation='relu'))  
+
+model.summary() 
+
+model.add(layers.Flatten())  
+
+model.add(layers.Dense(64, activation='relu'))  
+
+model.add(layers.Dense(10))  
+
+model.summary()  
+
+model.compile(optimizer='adam',loss=tf.keras.losses.SparseCategoricalCrossentrop 
+(from_logits=True),  metrics=['accuracy']) 
+
+history = model.fit(train_images, train_labels, epochs=10, validation_data=(test_images, 
+test_labels)) plt.plot(history.history['accuracy'],  label='accuracy') 
+
+plt.plot(history.history['val_accuracy'],  label='val_accuracy')  
+
+plt.xlabel('Epoch') 
+
+plt.ylabel('Accuracy')  
+
+plt.ylim([0.5,  1])  
+
+plt.legend(loc='lower right') 
+
+test_loss, test_acc = model.evaluate(test_images, test_labels, verbose=2)  
+
+print(test_acc) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                        15 
+
+8
+Ex. No:6 
+                               IMPROVE    THE  DEEP LEARNING    MODE   BY TUNING   HYPER  PARAMETERS 
+Date:10-2-2024 
+
+
+
+
+             AIM: 
+
+                         To  write a python program  to improve the  deep learning model by fine  tuning hyper 
+             parameters. 
+
+
+
+             ALGORITHM: 
+
+             Step 1: Import necessary libraries.  
+
+             Step 2: Generate a synthetic dataset. 
+
+             Step 3: This creates a dataset with 1000 samples, 20 features, 10 of which are informative and 
+                         2 classes. Then define the parameter distribution for hyper parameter tuning. 
+
+             Step  4:  Initialize   the  decision  tree classifier  and  perform  hyper  parameter  tuning  using 
+                         Randomized Search CV.  
+
+             Step  5: Print  the best  parameters and best score found during  the  hyper parameter tuning 
+                         process. 
+
+
+
+             PROGRAM: 
+
+             import  numpy as np 
+
+             from  sklearn.datasets import make_classification 
+
+             X,  y = make_classification(n_samples=1000, n_features=20, n_informative=10, n_classes=2, 
+             random_state=42) 
+
+             from  scipy.stats import randint 
+
+             from  sklearn.tree import DecisionTreeClassifier 
+
+             from  sklearn.model_selection import RandomizedSearchCV  
+
+             param_dist = {"max_depth":  [3, None], "max_features": randint(1,  9), "min_samples_leaf": 
+             randint(1,  9), "criterion":  ["gini",  "entropy"]} 
+
+             tree = DecisionTreeClassifier() 
+
+             tree_cv = RandomizedSearchCV(tree, param_dist, cv=5)  
+
+             tree_cv.fit(X,  y) 
+
+             print("Tuned  Decision Tree Parameters: {}".format(tree_cv.best_params_))  
+
+             print("Best  score is {}".format(tree_cv.best_score_)) 
+
+
+
+                                                                                      19 
+
+9
+OUTPUT: 
+
+Tuned Decision Tree Parameters: {'criterion': 'entropy', 'max_depth': None, 'max_features': 
+7, 'min_samples_leaf': 8} 
+
+ Best score is 0.827 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+RESULT: 
+
+           Thus the program for deep learning model by fine tuning hyper parameters was 
+executed successfully 
+
+
+
+
+
+                                                                        20 
+
+10
+Ex. No:7 
+                                              IMPLEMENT    A  TRANSFER  LEARNING    CONCEPT   IN IMAGE 
+Date:20-2-2024                                                            CLASSIFICATION 
+
+
+
+
+
+
+
+             AIM: 
+
+                         To write  a python program to implement a transfer learning concept in image 
+             classification. 
+
+
+
+             ALGORITHM: 
+
+             Step 1: Import tensorflow  as tf. 
+
+             Step 2: Define the class names and directory containing training images.  
+
+             Step 3: Set up data augmentation parameters for training data. 
+
+             Step 4: Load and augment training data using flow_from_directory. 
+
+             Step 5: Load the pre-trained VGG16 model (excluding the top layer) and freeze some layers. 
+
+              Step 6: Add    custom classification layers on top of the VGG16 base model. 
+
+             Step 7: Compile and train the model and Save the trained model. Step 8: Use the model for 
+                         predictions on a sample image. 
+
+
+
+             PROGRAM: 
+
+             import  tensorflow as tf 
+
+             from  tensorflow.keras import layers, models 
+
+             from  tensorflow.keras.preprocessing.image import ImageDataGenerator  
+
+             from  tensorflow.keras.applications import ResNet50 
+
+             import  numpy as np 
+
+             import  matplotlib.pyplot  as plt 
+
+             class_names = ['Cats', 'Dogs'] # Update with your actual class names  
+
+             train_dir  = r'C:\Users\LENOVO\PycharmProjects\nn\train'  
+
+             train_datagen = ImageDataGenerator(  
+
+             rescale=1./255,  
+
+             rotation_range=40,  
+
+             width_shift_range=0.2,  
+
+
+                                                                                      21 
+
+11
+height_shift_range=0.2,  
+
+shear_range=0.2,  
+
+zoom_range=0.2,  
+
+horizontal_flip=True,  
+
+fill_mode='nearest') 
+
+train_generator = train_datagen.flow_from_directory(  
+
+train_dir, 
+
+target_size=(224, 224), # ResNet50 input size  
+
+batch_size=32, 
+
+class_mode='categorical' 
+
+) 
+
+base_model = ResNet50(weights='imagenet', include_top=False, input_shape=(224, 224, 3))  
+
+for layer in base_model.layers: 
+
+layer.trainable = False 
+
+x = layers.GlobalAveragePooling2D()(base_model.output)  
+
+x = layers.Dense(256, activation='relu')(x) 
+
+x = layers.Dropout(0.5)(x) 
+
+predictions = layers.Dense(len(class_names), activation='softmax')(x)  
+
+transfer_model = models.Model(inputs=base_model.input, outputs=predictions) 
+
+transfer_model.compile(optimizer='adam', 
+
+loss='categorical_crossentropy',  
+
+metrics=['accuracy']) 
+
+transfer_model.summary()  
+
+print("Training  started...") 
+
+history = transfer_model.fit(train_generator, epochs=10)  
+
+print("Training  completed.") 
+
+print("Saving the model...")  
+
+transfer_model.save(r'C:\Users\LENOVO\PycharmProjects\nn\transfer_learning_resnet50_m
+odel.h5')  
+
+print("Model  saved successfully.") 
+
+print("Making  predictions...") 
+
+                                                                        22 
+
+12
+img_path = r'C:\Users\LENOVO\PycharmProjects\nn\pet.jpg' # Update with the path to the 
+image you want to classify 
+
+img = tf.keras.preprocessing.image.load_img(img_path, target_size=(224, 224)) # Resize 
+images to match the input size expected by ResNet50 
+
+img_array = tf.keras.preprocessing.image.img_to_array(img)  
+
+img_array = np.expand_dims(img_array, axis=0)  
+
+img_array /= 255.0 # Normalize pixel values to [0, 1]  
+
+predictions = transfer_model.predict(img_array) 
+
+predicted_class = np.argmax(predictions[0]) 
+
+ predicted_class_name = class_names[predicted_class]  
+
+plt.imshow(img) 
+
+plt.axis('off') 
+
+plt.title('Predicted Class: {}'.format(predicted_class_name))  
+
+plt.show() 
+
+print("Prediction completed.") 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                        23 
+
+13
+PROGRAM: 
+
+import tensorflow as tf 
+
+from tensorflow.keras import layers, models 
+
+from tensorflow.keras.preprocessing.image import ImageDataGenerator 
+
+from tensorflow.keras.applications import VGG16 
+
+from tensorflow.keras.preprocessing import image  
+
+import numpy as np 
+
+import matplotlib.pyplot  as plt 
+
+class_names = ['Cats', 'Dogs'] 
+
+train_dir = r'C:\Users\LENOVO\PycharmProjects\nn\train'  
+
+train_datagen = ImageDataGenerator( 
+
+rescale=1./255, 
+
+rotation_range=40,  
+
+width_shift_range=0.2,  
+
+height_shift_range=0.2,  
+
+shear_range=0.2,  
+
+zoom_range=0.2,  
+
+horizontal_flip=True,  
+
+fill_mode='nearest' 
+
+) 
+
+train_generator = train_datagen.flow_from_directory( 
+
+train_dir, 
+
+target_size=(150, 150),  
+
+batch_size=32, 
+
+class_mode='binary' # Use 'binary' for binary classification 
+
+) 
+
+base_model = VGG16(weights='imagenet', include_top=False, input_shape=(150, 150, 3))  
+
+for layer in base_model.layers: 
+
+layer.trainable = False 
+
+
+                                                                        27 
+
+14
+x = layers.Flatten()(base_model.output)  
+
+x = layers.Dense(256, activation='relu')(x)  
+
+x = layers.Dropout(0.5)(x) 
+
+predictions =  layers.Dense(1, activation='sigmoid')(x)   #  Binary  classification,  so  1 output 
+neuron with sigmoid activation 
+
+transfer_model = models.Model(inputs=base_model.input, outputs=predictions)  
+
+transfer_model.compile(optimizer='adam', 
+
+loss='binary_crossentropy',  
+
+metrics=['accuracy']) 
+
+transfer_model.summary()  
+
+print("Training  started...") 
+
+history = transfer_model.fit(train_generator, epochs=10)  
+
+print("Training  completed.") 
+
+print("Saving the model...")  
+
+transfer_model.save(r'C:\Users\LENOVO\PycharmProjects\nn\transfer_learning_model1.ker
+as') 
+
+print("Model  saved successfully.") 
+
+img_path = r'C:\Users\LENOVO\PycharmProjects\nn\pet.jpg'  
+
+img = image.load_img(img_path, target_size=(150, 150))  
+
+img_array = image.img_to_array(img) 
+
+img_array = np.expand_dims(img_array, axis=0)  
+
+img_array /= 255.0 # Normalize pixel values to [0, 1]  
+
+print("Making  predictions...") 
+
+predictions = transfer_model.predict(img_array) 
+
+predicted_class = predictions[0][0] #  Since it's binary, you can directly  take the first element 
+of the prediction array 
+
+predicted_class_name = class_names[int(predicted_class)] # Convert the predicted class to its 
+name plt.imshow(img) 
+
+plt.axis('off') 
+
+plt.title('Predicted Class: {}'.format(predicted_class_name))  
+
+plt.show() 
+
+
+
+                                                                        28 
+
+15
+PROGRAM: 
+
+ACCURACY: 
+
+import numpy as np  
+
+import tensorflow as tf 
+
+from tensorflow.keras.datasets import imdb 
+
+from tensorflow.keras.preprocessing.sequence import pad_sequences  
+
+from tensorflow.keras.models import Sequential 
+
+from tensorflow.keras.layers import Dense, Embedding, SimpleRNN  
+
+max_features = 10000 
+
+maxlen = 500 
+
+batch_size = 32  
+
+print('Loading data...') 
+
+(x_train, y_train), (x_test, y_test) = imdb.load_data(num_words=max_features)  
+
+print(len(x_train), 'train  sequences') 
+
+print(len(x_test), 'test sequences') 
+
+print('Pad sequences (samples x time)') 
+
+x_train = pad_sequences(x_train, maxlen=maxlen)  
+
+x_test = pad_sequences(x_test, maxlen=maxlen)  
+
+print('x_train shape:', x_train.shape) 
+
+print('x_test shape:', x_test.shape)  
+
+model = Sequential() 
+
+model.add(Embedding(max_features, 32)) 
+
+model.add(SimpleRNN(32))  
+
+model.add(Dense(1, activation='sigmoid')) 
+
+model.compile(optimizer='rmsprop', loss='binary_crossentropy', metrics=['acc'])  
+
+print(model.summary()) 
+
+print('Training...') 
+
+history = model.fit(x_train,  y_train, epochs=10, batch_size=batch_size, validation_split=0.2)  
+
+print('Evaluating...') 
+
+
+                                                                        32 
+
+16
+loss, accuracy = model.evaluate(x_test, y_test)  
+
+print('Test Loss:', loss) 
+
+print('Test Accuracy:', accuracy) 
+
+
+
+
+
+
+OUTPUT: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                        33 
+
+17
+PROGRAM: 
+
+import numpy as np  
+
+import tensorflow as tf 
+
+from tensorflow.keras.models import Model 
+
+from tensorflow.keras.layers import Input, LSTM,  RepeatVector  
+
+from tensorflow.keras.callbacks import ModelCheckpoint  
+
+data = np.random.rand(1000, 10, 1) feature 
+
+latent_dim = 2 inputs = Input(shape=(10, 1))  
+
+encoded = LSTM(4)(inputs) 
+
+encoded = RepeatVector(10)(encoded) 
+
+decoded = LSTM(4, return_sequences=True)(encoded) 
+
+decoded = tf.keras.layers.TimeDistributed(tf.keras.layers.Dense(1))(decoded) 
+
+ autoencoder = Model(inputs, decoded) 
+
+ autoencoder.compile(optimizer='adam',  loss='mse')  
+
+autoencoder.summary() 
+
+autoencoder.fit(data, data, epochs=50, batch_size=32, validation_split=0.2)  
+
+encoder = Model(inputs, encoded) 
+
+encoded_input = Input(shape=(latent_dim, 4))  
+
+decoder_layer = autoencoder.layers[-2](encoded_input)  
+
+decoder_layer = autoencoder.layers[-1](decoder_layer) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                        36 
+
+18
+PROGRAM: 
+
+import tensorflow as tf 
+
+from tensorflow import  keras  
+
+import numpy as np 
+
+(X_train, _), (_, _) = keras.datasets.mnist.load_data() 
+
+X_train = (X_train.astype(np.float32)  - 127.5) / 127.5 # Normalize to [-1, 1]  
+
+X_train = np.expand_dims(X_train, axis=-1) 
+
+generator = keras.Sequential([ 
+
+keras.layers.Dense(7 * 7 * 128, 
+
+input_shape=(100,)), 
+
+keras.layers.Reshape((7, 7, 128)), 
+
+keras.layers.Conv2DTranspose(64, kernel_size=3, strides=2, padding='same'),  
+
+keras.layers.LeakyReLU(alpha=0.2), 
+
+keras.layers.Conv2DTranspose(1, kernel_size=3, strides=2, padding='same', 
+activation='tanh') 
+
+]) 
+
+discriminator = keras.Sequential([ 
+
+keras.layers.Conv2D(64, kernel_size=3, strides=2, padding='same', input_shape=(28, 28, 1)), 
+keras.layers.LeakyReLU(alpha=0.2), 
+
+keras.layers.Conv2D(128, kernel_size=3, strides=2, padding='same'), 
+
+keras.layers.LeakyReLU(alpha=0.2), 
+
+keras.layers.Flatten(), 
+
+keras.layers.Dense(1, activation='sigmoid') 
+
+]) 
+
+discriminator.compile(loss='binary_crossentropy',  
+
+optimizer=keras.optimizers.Adam(learning_rate=0.0002),  
+
+metrics=['accuracy']) 
+
+discriminator.trainable = False  
+
+gan_input = keras.Input(shape=(100,))  
+
+generated_image = generator(gan_input) 
+
+
+                                                                        40 
+
+19
+gan_output = discriminator(generated_image)  
+
+gan = keras.Model(gan_input, gan_output)  
+
+gan.compile(loss='binary_crossentropy', 
+
+optimizer=keras.optimizers.Adam(learning_rate=0.0002))  
+
+batch_size = 64 
+
+epochs = 10 
+
+sample_interval = 1000 
+
+for epoch in range(epochs): 
+
+idx = np.random.randint(0, X_train.shape[0], batch_size)  
+
+real_images = X_train[idx] 
+
+noise = np.random.normal(0, 1, (batch_size, 100)) 
+
+fake_images = generator.predict(noise) 
+
+real_labels = np.ones((batch_size, 1)) 
+
+fake_labels = np.zeros((batch_size, 1)) 
+
+d_loss_real = discriminator.train_on_batch(real_images, real_labels)  
+
+d_loss_fake = discriminator.train_on_batch(fake_images, fake_labels)  
+
+d_loss = 0.5 * np.add(d_loss_real, d_loss_fake) 
+
+noise = np.random.normal(0, 1, (batch_size, 100)) 
+
+g_loss = gan.train_on_batch(noise, real_labels) 
+
+if epoch % sample_interval == 0: 
+
+print(f'Epoch {epoch},  D Loss: {d_loss[0]},   G Loss: {g_loss}') 
+
+_, accuracy = discriminator.evaluate(np.concatenate([real_images, fake_images]), 
+
+ np.concatenate([real_labels, fake_labels]), verbose=0) 
+
+print(f"Discriminator  Accuracy:  {accuracy:.4f}") 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                        41 
+
+20
+PROGRAM: 
+
+import tensorflow as tf 
+
+from tensorflow.keras.applications import VGG16  
+
+from tensorflow.keras.models import Sequential 
+
+from tensorflow.keras.layers import Dense, Flatten, Dropout  
+
+from tensorflow.keras.optimizers import Adam 
+
+from tensorflow.keras.preprocessing.image import ImageDataGenerator  
+
+from google.colab import drive 
+
+drive.mount('/content/drive') 
+
+data_dir = '/content/drive/MyDrive/Collab' 
+
+vgg_model = VGG16(weights='imagenet', include_top=False, input_shape=(224, 224, 3))  
+
+for layer in vgg_model.layers: 
+
+layer.trainable = False  
+
+model = Sequential()  
+
+model.add(vgg_model)  
+
+model.add(Flatten()) 
+
+model.add(Dense(512, activation='relu'))  
+
+model.add(Dropout(0.5)) 
+
+model.add(Dense(256, activation='relu'))  
+
+model.add(Dropout(0.5)) 
+
+num_classes = 2 
+
+model.add(Dense(num_classes, activation='softmax')) 
+
+model.compile(optimizer=Adam(lr=1e-4),  loss='categorical_crossentropy', 
+metrics=['accuracy'])  
+
+train_data_dir = data_dir + '/train' 
+
+validation_data_dir = data_dir + '/validation'  
+
+train_datagen = ImageDataGenerator(rescale=1./255)  
+
+test_datagen = ImageDataGenerator(rescale=1./255)  
+
+train_generator = train_datagen.flow_from_directory( 
+
+train_data_dir,  
+
+                                                                        44 
+
+21
+target_size=(224, 224), 
+
+batch_size=32, 
+
+class_mode='categorical', # Use 'categorical' for multi-class classification  
+
+shuffle=True 
+
+) 
+
+validation_generator = test_datagen.flow_from_directory( validation_data_dir, 
+
+target_size=(224, 224),  
+
+batch_size=32, 
+
+class_mode='categorical', # Use 'categorical' for multi-class classification  
+
+shuffle=False 
+
+) 
+
+class_labels = train_generator.class_indices  
+
+print("Class labels:", class_labels) 
+
+model.fit( train_generator, 
+
+steps_per_epoch=train_generator.samples // train_generator.batch_size,  
+
+epochs=10, # Adjust the number of epochs as needed  
+
+validation_data=validation_generator,  
+
+validation_steps=validation_generator.samples // validation_generator.batch_size 
+
+) 
+
+validation_loss, validation_accuracy = model.evaluate(validation_generator)  
+
+print("Validation  Accuracy:",  validation_accuracy) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                        45 
+
+22
+PROGRAM: 
+
+import tensorflow as tf  
+
+import numpy as np  
+
+num_users = 1000 
+
+num_items = 500 
+
+num_samples = 10000 
+
+user_ids_train = np.random.randint(0, num_users, num_samples)  
+
+item_ids_train = np.random.randint(0, num_items, num_samples) 
+
+ratings_train = np.random.randint(1, 6, num_samples) # Assume ratings are integers between 
+1 and 5 user_ids_val = np.random.randint(0, num_users, num_samples) 
+
+item_ids_val = np.random.randint(0, num_items, num_samples)  
+
+ratings_val = np.random.randint(1, 6, num_samples)  
+
+user_ids_test = np.random.randint(0, num_users, num_samples)  
+
+item_ids_test = np.random.randint(0, num_items, num_samples)  
+
+ratings_test = np.random.randint(1, 6, num_samples) 
+
+class CollaborativeFilteringModel(tf.keras.Model): 
+
+def  init (self, num_users, num_items, embedding_size):  
+
+super(CollaborativeFilteringModel,  self). init () 
+
+self.user_embedding = tf.keras.layers.Embedding(num_users, embedding_size)  
+
+self.item_embedding = tf.keras.layers.Embedding(num_items, embedding_size)  
+
+self.dot = tf.keras.layers.Dot(axes=1) 
+
+def call(self, inputs):  
+
+user_id, item_id = inputs 
+
+user_embedding = self.user_embedding(user_id)  
+
+item_embedding = self.item_embedding(item_id)  
+
+return self.dot([user_embedding, item_embedding]) 
+
+embedding_size = 50 
+
+model = CollaborativeFilteringModel(num_users, num_items, embedding_size)  
+
+model.compile(optimizer='adam', loss='mean_squared_error') 
+
+history = model.fit([user_ids_train,  item_ids_train], ratings_train,  
+
+                                                                        48 
+
+23
+validation_data=([user_ids_val, item_ids_val], ratings_val),  
+
+epochs=10, batch_size=64) 
+
+loss = model.evaluate([user_ids_test, item_ids_test], ratings_test)  
+
+print("Test Loss:", loss) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                        49 
+
+24
+PROGRAM: 
+
+import numpy as np  
+
+import tensorflow as tf  
+
+import cv2 
+
+import matplotlib.pyplot  as plt 
+
+(X_num, y_num), _ = tf.keras.datasets.mnist.load_data() 
+
+X_num = np.expand_dims(X_num, axis=-1).astype(np.float32) / 255.0  
+
+grid_size = 16 # image_size / mask_size 
+
+def make_numbers(X, y):  
+
+for _ in range(3): 
+
+idx = np.random.randint(len(X_num)) 
+
+number = X_num[idx]  @ (np.random.rand(1, 3) + 0.1) # Make digit colorful  
+
+kls = y_num[idx] 
+
+px, py = np.random.randint(0, 100), np.random.randint(0, 100) 
+
+mx, my = (px+14) //  grid_size, (py+14) // grid_size 
+
+channels = y[my][mx]  
+
+if channels[0] > 0: 
+
+channels[0] = 1.0 
+
+channels[1] = px - (mx *  grid_size) # x1  
+
+channels[2] = py - (my * grid_size)  # y1 
+
+channels[3] = 28.0 # x2, in this demo image only 28 px as width  
+
+channels[4] = 28.0 # y2, in this demo image only 28 px as height  
+
+channels[5 + kls] = 1.0 
+
+X[py:py+28,  px:px+28] += number  
+
+def make_data(size=64): 
+
+X = np.zeros((size, 128, 128, 3), dtype=np.float32) 
+
+y = np.zeros((size, 8, 8, 15), dtype=np.float32)  
+
+for i in range(size): 
+
+make_numbers(X[i], y[i]) 
+
+
+                                                                        52 
+
+25
+X = np.clip(X, 0.0, 1.0)  
+
+return X, y 
+
+def get_color_by_probability(p):  
+
+if p < 0.3: 
+
+return (1., 0., 0.)  
+
+if p < 0.7: 
+
+return (1., 1., 0.) 
+
+return (0., 1., 0.) 
+
+def show_predict(X, y, threshold=0.1):  
+
+X = X.copy() 
+
+for mx in range(8):  
+
+for my in range(8): 
+
+channels = y[my][mx] 
+
+prob, x1, y1, x2, y2 = channels[:5]  
+
+if prob < threshold: 
+
+continue 
+
+color = get_color_by_probability(prob) 
+
+px, py = (mx * grid_size) + x1, (my * grid_size) + y1 
+
+cv2.rectangle(X, (int(px), int(py)), (int(px + x2), int(py + y2)), color, 1) 
+
+cv2.rectangle(X, (int(px), int(py - 10)), (int(px + 12), int(py)), color, -1)  
+
+kls = np.argmax(channels[5:]) 
+
+cv2.putText(X, f'{kls}', (int(px + 2), int(py-2)), cv2.FONT_HERSHEY_PLAIN, 0.7, (0.0, 
+0.0, 0.0)) 
+
+plt.imshow(X) 
+
+X, y = make_data(size=1)  
+
+show_predict(X[0], y[0])  
+
+plt.show() 
+
+
+
+
+
+
+
+
+
+                                                                  53 
+
+26
+PROGRAM: 
+
+import numpy as np  
+
+num_states = 10 
+
+num_actions = 10 
+
+Q = np.zeros((num_states, num_actions))  
+
+alpha = 0.1 
+
+gamma = 0.9 
+
+epsilon = 0.1 
+
+def simulate_environment(state, action): 
+
+reward = 0 
+
+next_state = (state + action) % num_states  
+
+return next_state, reward 
+
+def train_q_learning(num_episodes): 
+
+for episode in range(num_episodes): 
+
+state = np.random.randint(0, num_states)  
+
+for _ in range(num_states): 
+
+if np.random.uniform(0, 1) &lt;  epsilon: 
+
+action = np.random.randint(0, num_actions) # Exploration  
+
+else: 
+
+action = np.argmax(Q[state, :]) 
+
+next_state, reward = simulate_environment(state, action) 
+
+Q[state, action] = (1 - alpha) * Q[state, action] + alpha * (reward + gamma * 
+np.max(Q[next_state, :])) 
+
+state = next_state 
+
+def generate_response(state): 
+
+action = np.argmax(Q[state, :])  
+
+return action 
+
+def interactive_dialogue(): 
+
+print(&quot;Welcome  to the dialogue system!&quot;) 
+
+print(&quot;Enter  your dialogue context (an integer between 0 and 9):&quot;)  
+
+                                                                        56 
+
+27
+while True: 
+
+try: 
+
+context = int(input()) 
+
+if 0 &lt;=  context &lt;  num_states: 
+
+response_action = generate_response(context)  
+
+print(&quot;Generated response action:&quot;, response_action)  
+
+else: 
+
+print(&quot;Context  should be an integer between 0 and 9.&quot;) 
+
+except ValueError: 
+
+print(&quot;Invalid  input.  Please enter an integer.&quot;)  
+
+num_episodes = 1000 
+
+train_q_learning(num_episodes)  
+
+interactive_dialogue() 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                        57 
+

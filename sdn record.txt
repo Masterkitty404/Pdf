@@ -1,0 +1,946 @@
+1
+UNIVERSITY     COLLEGE  OF ENGINEERING 
+                            NAGERCOIL 
+       (ANNA UNIVERSITY CONSTITUENT COLLEGE) 
+
+                KONAM, NAGERCOIL – 629 004 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  CCS365-SOFTWARE DEFINED NETWORKS 
+
+
+
+
+
+         REGISTER NO: 
+
+2
+              UNIVERSITY      COLLEGE  OF ENGINEERING 
+                                           NAGERCOIL 
+                      (ANNA UNIVERSITY CONSTITUENT COLLEGE) 
+
+                                KONAM, NAGERCOIL – 629 004 
+
+
+
+
+
+
+
+
+
+
+
+
+                          Register No: 
+
+         Certified   that,  this  is  the bonafide   record  of  work  done  by 
+
+Mr./Ms.     ……………………………………………………….      of    VI 
+
+Semester in Computer  Science and Engineering   of  this college,  in 
+
+the  CCS365-SOFTWARE DEFINED   NETWORKS during  academic 
+
+year 2023-2024 in partial  fulfillment  of  the requirements  of  the B.E 
+
+Degree course of the Anna University   Chennai. 
+
+
+
+
+
+Staff-in-charge                                            Head of the Department 
+
+
+
+This record is submitted for the University Practical Examination held on 
+
+………………………… 
+
+
+
+
+
+Internal Examiner                                              External Examiner 
+
+3
+ 
+                                                                INDEX 
+
+
+
+  Exp   No       Date                                        Title                                    Page       Sign 
+
+
+                   02/02/2024          Setup your own virtual SDN lab                    1 
+        1. 
+
+
+                                         Create a simple mininet topology with SDN 
+        2.                           controller and use Wireshark to capture and 
+                  06/02/2024                                                                                 8 
+                                      visualize the OpenFlow messages such as 
+                                      OpenFlow FLOW MOD, PACKET IN,  
+                                      PACKET OUT etc. 
+
+                                        Create a SDN application that uses the           
+                  07/03/2024  Northbound API to program flow table rules on     12 
+       3. 
+                                      the switch for various use cases like L2 learning 
+                                      switch, Traffic Engineering, Firewall etc.. 
+
+                                        Create a simple end-to-end network service             
+                  19/03/2024                                                                                15 
+        4.                           with two VNFs using vim-emu.  
+
+
+
+                  30/03/2024   Install OSM and onboard and orchestrate network     18 
+        5. 
+                                     service. 
+
+4
+Ex No:1                               Set Up Your Own Virtual    SDN  Lab 
+
+Date:02/02/2024 
+
+AIM: 
+
+    To set up a virtual SDN Lab by Installing mininet, kathara, GNS3. 
+
+PROCEDURE: 
+
+ I.      Installation    of Mininet: 
+
+ Step 1:  Start your Ubuntu terminal 
+
+             $ sudo apt-get update 
+
+ Step 2:  Install Mininet 
+
+             $ sudo apt-get install mininet 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ Step 3:  Check the mininet version 
+
+        $ mn  - -version 
+
+
+
+
+
+
+
+
+
+
+
+
+ Step 4: To test multiple switches and Openflow controllers. 
+
+            $ sudo  mn  - -switch ovsbr  - -test  pingall     
+
+
+
+                                                                     1 
+
+5
+Step 5: If mininet complaints that open vswitch isn’t  working,make sure it is installed  and        
+          running , 
+
+         $ sudo apt-get  install  openvswitch  - -switch 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Step 6:  Now start the mininet VM  by 
+
+           $ sudo  mn 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ Step 6: To display the available nodes  
+
+              mininet   > nodes 
+
+              mininet   >net 
+
+
+                                                                          2 
+
+6
+             mininet >dump 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+II.     Installation     of Kathara: 
+
+  Step 1: Add the Kathara repository to your repository. 
+
+             $ sudo add-apt-repository ppa:katharaframework/kathara 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ Step 2: Update your apt cache by running. 
+
+            $ sudo apt update 
+
+
+
+
+
+
+
+
+
+
+
+
+ Step 3: Now install Kathara by  
+
+            $ sudo apt install kathara 
+
+
+
+                                                                    3 
+
+7
+Step 4: By default,kathara depends on Docker ,you can install docker by 
+           $ sudo apt  install  docker.io 
+
+
+
+
+
+
+
+
+
+
+
+
+
+Step 5: Install xterm terminal emulator is suggested. 
+           $ sudo apt  install  xterm 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Step 6: Checking the Kathara version by 
+           $ kathara    - -version 
+
+
+
+
+
+
+
+
+
+
+
+                                                                        4 
+
+8
+  Step 7: Starting kathara can be done by 
+                   $ sudo kathara  vstart  -n  name     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+III.        Installation      of  GNS3 
+
+
+  Step 1: Add the gns3 repository to your repository. 
+         $ sudo add-apt-repository   ppa:gns3/ppa                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Step 2: Update the version installed 
+              $ sudo apt update 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Step 3:Install GNS3 
+
+
+            $sudo apt install  gns3-gui  gns3-server 
+
+
+                                                                           5 
+
+9
+  Step 12:To install docker ce 
+             $ sudo apt  install  docker-ce 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Step 13: Start GNS3 
+            $ gns3 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                          6 
+
+10
+RESULT:     
+
+        Thus the virtual box environment for SDN Lab was successfully completed. 
+
+
+                                                                  7 
+
+11
+Ex No: 2            Create  a simple   mininet   topology  with   SDN  Controller    and  use                 
+Date:06/02/2024     Wireshark  to  capture  and  visualize   the Openflow   messages   
+                          such as Openflow   FLOW    MODE,PACKET      IN,PACKET     OUT 
+                           etc.  
+AIM: 
+ 1. Create a simple Mininet network with an SDN controller. 
+ 2. Capture OpenFlow messages, including FLOW_MOD, PACKET_IN, and PACKET_OUT,         
+ using Wireshark. 
+ 3. Visualize the captured OpenFlow messages for analysis. 
+ PROCEDURE: 
+ 1.Install  pox controller: 
+       Install the pox controller in to your system. 
+           $ sudo apt-get install git git clone https:\\github.com\noxrepo\pox.git 
+
+
+
+
+
+
+
+
+
+ 2. Start POX Controller: 
+ Navigate to the POX directory and start the POX controller.You can use the ‘pox.py’ script 
+ along with a specific module.For example,you can use the ‘forwarding.l2_learning’ module. 
+             $ cd pox 
+                ./pox.py forwarding.l2_learning 
+
+
+
+
+
+
+
+
+
+
+
+
+ 4. Install Wireshark: 
+     Install Wireshark using the following command. 
+          $ sudo apt-get install wireshark 
+
+
+
+
+
+                                                                     8 
+
+12
+3.Start Mininet   with  Openflow  support: 
+    Use Mininet’s  command-line interface to  create a network topology.Here a simple topology 
+with one switch and two hosts will  be created. 
+         $ sudo mn   - -controller=remote,ip=127.0.0.1,port=6633      - -topo  single,2 
+
+
+
+
+
+
+
+
+
+
+
+
+4. Start Mininet: 
+   Ensure you have Mininet  installed on your system. You can use a Linux distribution for 
+this task. 
+
+
+          $ sudo mn 
+
+
+
+
+
+
+
+
+
+
+
+
+
+5. Capture  OpenFlow  Messages with Wireshark: 
+• Start Wireshark and select your network interface (e.g., `eth0`). 
+• Begin capturing packets by clicking the "Start"  button in Wireshark. 
+
+              $ sudo wireshark   
+                                                                        9 
+
+13
+6. Generate OpenFlow  Messages: 
+
+
+In the Mininet terminal,  you can use the Mininet CLI to  generate OpenFlow messages. For 
+example, you can add a flow rule (FLOW_MOD)  or generate traffic (PACKET_OUT). 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                        10 
+
+14
+7. Stop Wireshark   Capture: 
+ Stop capturing packets in Wireshark when you've generated enough OpenFlow messages. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+RESULT: 
+
+
+          Thus to create a simple mininet topology with  SDN Controller and use  wireshark to 
+ capture  and visualize the openflow messages such as Openflow FLOW MODE,packet 
+ in,packet out etc. 
+
+                                                                        11 
+
+15
+Ex No : 3               Create   a SDN  application   that  uses the  Northbound    API   
+Date: 07/03/2024    program flow   table  rules  on the  switch  for  various   use cases     
+                             like  L2  learning   switch,  Traffic    Engineering,   Firewall     etc.  
+
+
+ AIM: 
+    Develop an SDN application that uses the Northbound API to program flow table rules on 
+  SDN switches for different use cases: L2 learning switch, Traffic Engineering, and  Firewall. 
+ PROCEDURE: 
+  1.Install  POX controller: 
+       Install the pox controller in to your system. 
+            $ sudo apt-get install git git clone https://github.com/noxrepo/pox.git 
+
+
+
+
+
+
+
+
+
+
+  2. Start POX Controller: 
+         Navigate to the POX directory and start the POX controller.You can use the ‘pox.py’ 
+  script along with a specific module.For example,you can use the ‘forwarding.l2_learning’ 
+  module. 
+              $ cd pox 
+                 ./pox.py forwarding.l2_learning 
+
+
+
+
+
+
+
+
+
+
+  3. Set Up the Development Environment: 
+   The following command is used to create a simple software-defined network (SDN) topology 
+  for testing and development purposes using Mininet, a network emulator. It configures a 
+  network consisting of one Open vSwitch (OVS) switch connected to three hosts. 
+
+           $ sudo mn –topo single,3  - -mac  - -arp - - switch ovsk - -controller=remote 
+
+
+
+
+                                                                     12 
+
+16
+2. Network  Testing  and Performance  Measurement  with   Mininet: 
+This  sequence of commands in Mininet includes opening an xterm terminal for host h1, 
+conducting a connectivity check between all hosts using pingall, and then measuring network 
+performance between hosts h1 and h2 using iperf. 
+            mininet>   xterm  h1 
+            mininet>   pingall 
+            mininet>iperf     h1 h2 
+
+
+
+
+
+
+
+
+
+
+
+
+
+4. Start Mininet: 
+   Ensure you have Mininet  installed on your system. You can use a Linux distribution for 
+this task. 
+         $ sudo mn 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                        13 
+
+17
+ 5. Start Wireshark: 
+       • Start Wireshark and select your network interface (e.g., `eth0`). 
+       • Begin capturing packets by clicking the "Start"  button in Wireshark. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 7. Stop Wireshark   Capture: 
+  Stop capturing packets in Wireshark when  API  program flow  table rules on the switch for 
+ various use cases are created. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+RESULT: 
+
+      Thus to create a SDN application that uses the Northbound API  program flow table rule  
+the switch for various use cases  like  L2 learning switch, Traffic Engineering, Firewall   etc. 
+was completed. 
+
+
+                                                                         14 
+
+18
+Ex NO: 4               Create  a simple  end-to-end   network   service  with   two  VNFs 
+Date:19/03/2024                                   using vim-emu. 
+
+
+  AIM:   
+       To  Create a simple end-to-end network service with two VNFs using vim-emu. 
+  PROCEDURE: 
+  1. Set Up the Environment: 
+   Make sure you have a Linux system. You can set up a virtual machine or a dedicated 
+  system. 
+   Install the required dependencies, including Docker and Docker Compose. 
+   $ echo install docker 
+   $ sudo apt install docker-ce 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  2. To Start the Docker: 
+     Start the installed docker 
+       $ echo start docker 
+  After installing and starting Docker, it is important to verify that the Docker service is running 
+correctly on your system. On Linux systems, you can use the systemctl command to check the 
+status of the Docker service. 
+       $ sudo systemctl status docker. 
+
+
+
+
+
+
+
+
+
+
+
+  3. Installing vim-emu Using Nested Docker: 
+
+
+                                                                     15 
+
+19
+vim-emu is an emulator for network functions  virtualization  (NFV),  enabling the simulation of 
+network environments for testing and development. Running vim-emu using nested Docker 
+allows you to create and manage the virtualized networks within a containerized setup, 
+providing flexibility   and isolation. 
+   $ echo install  vim-emu  using  nested docker 
+
+
+
+
+
+
+
+
+
+4.Clone into  vim-emu: 
+ Clone the ‘vim-emu’  repository from ETSI's Git  repository. 
+  $ git  clone https://osm.etsi.org/gerrit/osm/vim-emu.git 
+
+
+
+
+
+
+
+
+
+
+5. Start vim-emu  Controller: 
+       Navigate to the vim-emu  directory and start the vim-emu controller. After  cloning the 
+vim-emu repository, the next step is to build the Docker image for vim-emu.  This image will 
+include all the necessary components to run the emulator in a Docker container.  
+   $ cd   ~/vim-emu 
+         $docker  build  –t  vim-emu-img  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                        16 
+
+20
+6. To Start Containernet :   
+   Containernet is an extension of the Mininet network emulator that allows you to create 
+virtualized network topologies using Docker containers. 
+     $ echo start the containernet 
+    $docker run –name vim-emu - -it - -rn - -privileged - - pid=’host’ –v/var/run/docker. 
+sock :/var/run/docker.sock vin-emu-img/bin/bash 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+RESULT: 
+
+          Thus Creating a simple end-to-end network service with two VNFs using vim-emu was 
+
+  Successfully completed. 
+
+
+                                                                   17 
+
+21
+ EX No:5              Install   OSM  and  onboard   and  orchestrate   network   service. 
+ Date:30/03/2024 
+
+
+AIM: 
+      To Install OSM and onboard and orchestrate network service. 
+PROCEDURE: 
+1. Install OSM: 
+   Follow the instructions on the OSM GitHub repository (https://osm.etsi.org) to install 
+  OSM, which includes installing the OSM client and server components. 
+
+
+2. Clone OSM Repositories: 
+   Clone the OSM repositories from their GitLab: 
+   $ git clone https://osm.etsi.org/gerrit/osm/osm.git 
+
+
+3.Onboard the Network Service: 
+   Once your descriptor files are validated, onboard your network service to the OSM platform. 
+  This process registers your service with OSM and makes it available for deployment and 
+  orchestration. 
+     osm ns-create --nsd=my_network_service --ns_name=my_service_instance 
+
+
+4. Verify Onboarding: 
+  Once the command is executed successfully, verify that your network service has been 
+  onboarded by checking the OSM platform or using the CLI to list the available network 
+  services. 
+   osm ns-create --nsd=my_network_service --ns_name=my_service_instance 
+  Replace `<ns-instance-name>` with a suitable name for your instantiated service. 
+
+
+5.Instantiate the Network services: 
+      Instantiate the network service using OSM 
+     osm ns-instantiate <ns-instance-name> <your_network_service_name> 
+ Replace `<ns-instance-name>` with a suitable name for your instantiated service. 
+
+
+
+
+
+
+RESULT: 
+
+
+      Thus the Installation of OSM and onboard and orchestrate network service was succesfully 
+  completed. 
+
+
+
+                                                                    18 
+
